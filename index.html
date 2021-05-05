@@ -26,17 +26,17 @@
   <script>
     const items =[
       {
-        neme:'鉛筆',
+        name:'鉛筆',
         price:300,
         quantity:0
       },
       {
-        neme: 'ノート',
+        name: 'ノート',
         price: 400,
         quantity: 0
       },
       {
-        neme: '消しゴム',
+        name: '消しゴム',
         price: 500,
         quantity: 0
       },
@@ -55,7 +55,7 @@
         }
       },
       conputed:{
-        totolPrice:function(){
+        totalPrice:function(){
           return this.items.reduce((sum,item)=>{
             return sum + (item.price*item.quantity)
           },0)
