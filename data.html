@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">{{charactars[0].name}}
+    <button v-show="!Age" v-on:click="doAge">年齢
+    </button>
+  </div>
+  <script>
+    const charactars = [
+      {
+        name:'犬',
+        age:2
+      },
+      {
+        name:'猫',
+        age:3
+      },
+      {
+        name:'鳥',
+        age:7
+      },
+    ]
+    const vm = new Vue({
+      el:'#app',
+      data:{
+        charactars:charactars
+      },
+      methods:{
+        doAge:function(){
+          alert(this.age + '歳です')
+          this.age.forEach((age) => {
+            age
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
