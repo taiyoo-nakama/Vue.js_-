@@ -11,6 +11,7 @@
   <div id="app">{{charactars[0].name}}
     <button v-show="!Age" v-on:click="doAge">年齢
     </button>
+    <button>{{count}}</button>
   </div>
   <script>
     const charactars = [
@@ -27,6 +28,31 @@
         age:7
       },
     ]
+    const count = count({
+      el:'#count',
+      data:function(){
+        return{
+          count:0
+        }
+      },
+      created:function(){
+        console.log('created')
+        const that = this;
+        console.log(this.count)
+        console.log(this.$el)
+        this.timerld=setInterval(()=>{
+          tgat.count +=1
+        },1000)
+      },
+      mounted:function(){
+        console.log('mounted')
+        console.log(this.$el)
+      },
+      beforeDestroy:function(){
+        console.log('beforeDestroy')
+        clearInterval(this.timerld)
+      }
+    })
     const vm = new Vue({
       el:'#app',
       data:{
@@ -34,9 +60,9 @@
       },
       methods:{
         doAge:function(){
-          alert(this.age + '歳です')
-          this.age.forEach((age) => {
-            age
+          alert(this.charactars[0].age + '歳です')
+          this.charactars[0].age.forEach((age) => {
+            charactars.age = 0
           });
         }
       }

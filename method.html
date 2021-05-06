@@ -11,14 +11,20 @@
 
 <body>
   <div id="app">
+    <div class="style001">
+      {{count}}回
+    </div>
     <button v-on:click="sampleFunction">sampleFunctionを実行</button>
   </div>
   <script>
     const vm = new Vue({
       el: '#app',
+      data:{
+        count:1
+      },
       methods:{
-        sampleFunction(){
-          alert('クリックされました')
+        sampleFunction:function(){
+          this.count++;
         }
       }
     });
