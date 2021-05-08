@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- よく使用するUIパーツのコンポーネント化を行うことでコードの記述量を大きく減らすことができる。
+    また、省略した記述でタグもかける -->
+  <div id="app">
+    <p>通常</p>
+    <common-button></common-button>
+    <p>省略</p>
+    <common-button />
+  </div>
+  <script>
+    Vue.component('common-button', {
+      template:`
+      <div>
+        <botton>botton</botton>
+        <button>ボタン</button>
+      </div>
+      `
+    });
+    const vm = new Vue({
+      el: '#app',
+    });
+  </script>
+</body>
+</html>
+
+<!-- templateプロパティでエラーが出る記法
+Vue.component('common-botton',{
+  template:`
+  <div>二つのタグを並べる</div>
+  <div>二つのタグを並べる</div>
+  `
+});
+-->
+<!-- 複数のタグを記述したい場合は一つのタグにまとめその中に複数のタグを書くようにする
+また見易く記述するために開業を含める場合はバッククォートで囲む（｀｀） -->
+
+<!-- Vue.component('common-button', {
+template: `
+<div>
+  <div>二つのタグを並べる</div>
+  <div>二つのタグを並べる</div>
+</div>
+`
+}); -->

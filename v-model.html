@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<!-- v-model
+関数などを使用して変数に代入すること意外に、入力要素（input）からのユーザーの入力による値の変更が可能 -->
+<body>
+  <div id="app">
+    <input type="text" v-model="text">
+    <p :class="text" class="font">{{text}}</p>
+  </div>
+  <script>
+    const vm = new Vue({
+      el:'#app',
+      data(){
+        return{
+          text:'',
+        }
+      }
+    });
+  </script>
+  <style>
+    .error{
+      color: red;
+    }
+    .warning{
+      color: yellow;
+    }
+    .safe{
+      color: green;
+    }
+    .font{
+      font-size: 30px;
+      -webkit-text-stroke:3px #000;
+    }
+  </style>
+</body>
+</html>

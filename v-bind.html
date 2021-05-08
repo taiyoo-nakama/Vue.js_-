@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!-- v-bindディレクティブは値を動的に渡すことができる
+  通常であればClassやStyleなど決まった文字列を値として持たせますが、変数としてクラス名やスタイルを渡すことができる。
+v-bicd:属性名="値（変数）"というように使用
+省略版　　：属性名＝”値” -->
+<div id="app">
+  <a v-bind:style="warningText">Warning</a>
+  <button v-on:click="changefontsize">スタイル変更</button>
+</div>
+<script>
+  const vm = new Vue({
+    el:'#app',
+    data(){
+      return {
+        warningText:null,
+      }
+    },
+    methods:{
+      changefontsize(){
+        this.warningText = {'font-size':'200px'};
+      }
+    }
+  });
+</script>
+</body>
+</html>

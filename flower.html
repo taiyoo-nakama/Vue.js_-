@@ -5,16 +5,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>花占い</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-  <div class="flower">
-    <div class="flower_item">
-      <p class="flower_item_list"></p>
-      <p class="flower_item_list"></p>
-      <p class="flower_item_list"></p>
-      <p class="flower_item_list"></p>
-    </div>
-    <div class="anser">結果<br>{{flower-anser}}</div>
-  </div>
+<div id="app">
+  <p>花の枚数：{{ petal }}</p>
+  <p v-if="!isShowResult">現在の状況：{{status}}</p>
+  <h1 v-else>結果：{{status}}</h1>
+  <button v-on:click="toggleResult">花弁を減らす</button>
+</div>
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        result: null,
+        isLike: null,
+        petal: 0,
+        isShowResult: false,
+      }
+    },
+    methods: {
+      toggleResult() {
+        if (this.petal === 0) {
+          alert('花弁がなくなりました。。。');
+          return;
+        }
+        this.petal--;
+        this.isLike = !this.isLike;
+        if (this.petal === 0) {
+          this.isShowResult = true;
+        }
+      },
+      defaultBoolean() {
+        const value = Math.floor(Math.random() * 2);
+        return value === 1;
+      },
+      petalNumber() {
+        return Math.ceil(Math.random() * 9)
+      },
+    },
+    created() {
+      this.isLike = this.defaultBoolean();
+      this.petal = this.petalNumber();
+    },
+    computed: {
+      status() {
+        return this.isLike ? '好き' : '嫌い';
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
